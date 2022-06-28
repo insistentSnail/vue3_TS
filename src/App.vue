@@ -1,10 +1,34 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link>|
-    <router-link to="/about">About</router-link>
+    <h2>{{ store.state.name }}</h2>
+    <router-link to="/login">登录</router-link>|
+    <router-link to="/main">首页</router-link>
+    <div>
+      <el-button>Default</el-button>
+      <el-button type="primary">Primary</el-button>
+      <el-button type="success">Success</el-button>
+      <el-button type="info">Info</el-button>
+      <el-button type="warning">Warning</el-button>
+      <el-button type="danger">Danger</el-button>
+    </div>
   </div>
   <router-view />
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useStore } from 'vuex'
+
+export default defineComponent({
+  name: 'App',
+  setup() {
+    const store = useStore()
+    return {
+      store
+    }
+  }
+})
+</script>
 
 <style lang="scss">
 #app {
