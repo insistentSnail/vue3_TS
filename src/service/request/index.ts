@@ -32,7 +32,7 @@ class LXRequest {
     this.instance.interceptors.response.use(
       (res) => {
         console.log('所有实例的响应拦截')
-        return res
+        return res.data
       },
       (err) => {
         return err

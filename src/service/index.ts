@@ -1,4 +1,5 @@
 import LXRequest from './request'
+import type { LXRequestConfig } from './request/type'
 
 console.log(process.env.NODE_ENV, process.env)
 
@@ -7,7 +8,16 @@ const lxRequest = new LXRequest({
   baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 5000,
   interceptors: {
-    requestInterceptor: (config) => {
+    requestInterceptor: (config: LXRequestConfig) => {
+      const token = ''
+
+      if (token) {
+        // axios版本不同 headers类型也不同  获取重写类型
+        // if (config && config.headers) {
+        config.headers.Authorization = `Bearer ${token}`
+        // }
+      }
+
       console.log('某个实例的请求拦截')
       return config
     },

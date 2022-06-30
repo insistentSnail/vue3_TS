@@ -9,4 +9,5 @@ export interface LXRequestHook {
 
 export interface LXRequestConfig extends AxiosRequestConfig {
   interceptors?: LXRequestHook
+  headers?: any
 }
