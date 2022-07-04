@@ -1,13 +1,15 @@
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 
-export interface LXRequestHook {
+export interface LXRequestHook<T = AxiosResponse> {
   requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig
   requestInterceptorCatch?: (error: any) => any
-  responseInterceptor?: (config: AxiosResponse) => AxiosResponse
+  // responseInterceptor?: (res: AxiosResponse) => AxiosResponse
+  responseInterceptor?: (res: T) => T
   responseInterceptorCatch?: (error: any) => any
 }
 
-export interface LXRequestConfig extends AxiosRequestConfig {
-  interceptors?: LXRequestHook
+export interface LXRequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
+  interceptors?: LXRequestHook<T>
   headers?: any
+  showLoading?: boolean
 }
