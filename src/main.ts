@@ -6,6 +6,21 @@ import store from './store'
 // 引入axios
 import lxRequest from './service'
 
+// 初始化样式
+import 'normalize.css'
+import '@/assets/css/base.css'
+
+// 按需引入element-plus
+import { registerApp } from './global'
+// 引入element-plus/icons  element-plus 2.0版本后图标引用的方式
+// import icons from './global/globalIcon'
+
+const app = createApp(App)
+
+// app.use(icons)
+
+app.use(registerApp).use(store).use(router).mount('#app')
+
 interface DataType {
   data: any
   returnCode: string
@@ -36,10 +51,3 @@ lxRequest
   .then((res) => {
     console.log(res.data, res.returnCode, res.success)
   })
-
-// 按需引入element-plus
-import { registerApp } from './global'
-
-const app = createApp(App)
-
-app.use(registerApp).use(store).use(router).mount('#app')
