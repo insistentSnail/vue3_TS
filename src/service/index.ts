@@ -1,5 +1,6 @@
 import LXRequest from './request'
 import type { LXRequestConfig } from './request/type'
+import cache from '@/utils/cache'
 
 console.log(process.env.NODE_ENV, process.env)
 
@@ -9,8 +10,7 @@ const lxRequest = new LXRequest({
   timeout: 5000,
   interceptors: {
     requestInterceptor: (config: LXRequestConfig) => {
-      const token = ''
-
+      const token = cache.getCache('token') || ''
       if (token) {
         // axios版本不同 headers类型也不同  获取重写类型
         // if (config && config.headers) {

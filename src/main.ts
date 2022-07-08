@@ -2,9 +2,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { reloadKeepStore } from './store'
 
 // 引入axios
-import lxRequest from './service'
+// import lxRequest from './service'
 
 // 初始化样式
 import 'normalize.css'
@@ -19,35 +20,42 @@ const app = createApp(App)
 
 // app.use(icons)
 
-app.use(registerApp).use(store).use(router).mount('#app')
+app.use(registerApp)
+app.use(router)
+app.use(store)
 
-interface DataType {
-  data: any
-  returnCode: string
-  success: boolean
-}
+// 防止刷新页面store被清空
+reloadKeepStore()
 
-lxRequest
-  .request<DataType>({
-    url: '/home/multidata',
-    method: 'GET'
-    // interceptors: {
-    //   requestInterceptor: (config) => {
-    //     console.log('某个接口的请求拦截')
-    //     return config
-    //   },
-    //   requestInterceptorCatch: (err) => {
-    //     return err
-    //   },
-    //   responseInterceptor: (res) => {
-    //     console.log('某个接口的响应拦截')
-    //     return res
-    //   },
-    //   responseInterceptorCatch: (err) => {
-    //     return err
-    //   }
-    // }
-  })
-  .then((res) => {
-    console.log(res.data, res.returnCode, res.success)
-  })
+app.mount('#app')
+
+// interface DataType {
+//   data: any
+//   returnCode: string
+//   success: boolean
+// }
+
+// lxRequest
+//   .request<DataType>({
+//     url: '/home/multidata',
+//     method: 'GET',
+//     interceptors: {
+//       requestInterceptor: (config) => {
+//         console.log('某个接口的请求拦截')
+//         return config
+//       },
+//       requestInterceptorCatch: (err) => {
+//         return err
+//       },
+//       responseInterceptor: (res) => {
+//         console.log('某个接口的响应拦截')
+//         return res
+//       },
+//       responseInterceptorCatch: (err) => {
+//         return err
+//       }
+//     }
+//   })
+//   .then((res) => {
+//     console.log(res.data, res.returnCode, res.success)
+//   })

@@ -1,6 +1,6 @@
 <template>
   <!-- vue3页⾯ -->
-  <div class="phoneLogin">222</div>
+  <div class="phoneLogin">暂不支持手机号码登录</div>
 </template>
 
 <script lang="ts">

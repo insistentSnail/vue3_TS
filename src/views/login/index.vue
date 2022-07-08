@@ -31,6 +31,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .login {
   overflow: hidden;
+  width: 100%;
+  height: 100%;
   .kuang {
     position: fixed;
     top: 0;
@@ -40,8 +42,8 @@ export default defineComponent({
     z-index: -10;
     background-image: linear-gradient(
       180deg,
-      rgb(78, 168, 241),
-      rgb(37, 91, 241)
+      rgb(229, 255, 168),
+      rgb(255, 179, 44)
     );
     .bubble {
       position: absolute;
