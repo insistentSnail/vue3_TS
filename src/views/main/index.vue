@@ -49,6 +49,8 @@ export default defineComponent({
       background-color: #001529;
       color: rgb(183, 189, 195);
       height: 100%;
+      transition: all 0.3s;
+      overflow: hidden;
     }
     .page {
       height: 100%;

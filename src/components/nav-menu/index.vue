@@ -2,7 +2,7 @@
   <div class="nav-menu">
     <div class="logo">
       <img src="~@/assets/logo.png" alt="" />
-      <span class="title">Vue3+TS</span>
+      <span v-if="isShow" class="title">Vue3+TS</span>
     </div>
     <!-- 菜单 -->
     <el-menu
@@ -62,7 +62,13 @@ export default defineComponent({
   }
 })
 </script>
-
+<style lang="scss">
+.el-popper {
+  .el-menu-item.is-active {
+    color: #0a60bd !important;
+  }
+}
+</style>
 <style scoped lang="scss">
 .nav-menu {
   .logo {
