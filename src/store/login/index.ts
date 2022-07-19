@@ -5,6 +5,7 @@ import { accountLoginRequest, getUserInfo, getUserMenu } from '@/service/login'
 import { IAccount } from '@/service/login/type'
 import cache from '@/utils/cache'
 import router from '@/router'
+import { mapMenusToRoutes } from '@/utils/mapMenus'
 
 const loginModule: Module<ILoginState, IRootState> = {
   namespaced: true,
@@ -12,7 +13,8 @@ const loginModule: Module<ILoginState, IRootState> = {
     return {
       token: '',
       userInfo: {},
-      userMenu: []
+      userMenu: [],
+      routes: []
     }
   },
   getters: {},
@@ -28,6 +30,11 @@ const loginModule: Module<ILoginState, IRootState> = {
     changeUserMenu(state, userMenu: any) {
       state.userMenu = userMenu
       cache.setCache('userMenu', userMenu)
+      // 获取的菜单转换成路由数组
+      state.routes = mapMenusToRoutes(userMenu)
+      // 注册动态路由
+      state.routes.forEach((ele) => router.addRoute('Main', ele))
+      console.log(mapMenusToRoutes(userMenu), 33)
     }
   },
   actions: {
