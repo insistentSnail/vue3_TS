@@ -35,9 +35,11 @@ router.beforeEach((to, from, next) => {
   if (to.path !== '/login') {
     const token = cache.getCache('token')
     if (!token) {
-      return '/login'
+      // return '/login'
+      next('/login')
     }
   }
+  next()
   // next('/login')
   //   } else {
   //     console.log((store.state as any).login.routes, 'store.state.login.routes')

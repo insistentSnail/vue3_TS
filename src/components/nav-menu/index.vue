@@ -8,7 +8,7 @@
     <el-menu
       mode="vertical"
       :collapse="!isShow"
-      default-active="2"
+      default-active="39"
       class="el-menu-vertical-demo"
       background-color="#0C2135"
       text-color="#B7BDC3"
